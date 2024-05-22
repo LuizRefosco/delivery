@@ -10,12 +10,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Document(collection = "Credencial")
+@Entity
 public class Credencial implements UserDetails {
 	@MongoId(targetType = FieldType.STRING)
 	@Getter
