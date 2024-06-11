@@ -19,7 +19,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
-    private UUID id;
+    private UUID idPedido;
     @NotBlank
     private UUID idCliente;
     @NotBlank
