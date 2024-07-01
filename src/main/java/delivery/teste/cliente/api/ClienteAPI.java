@@ -6,7 +6,6 @@ import delivery.teste.cliente.api.response.ClienteDetalhadoResponse;
 import delivery.teste.cliente.api.response.ClienteResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.UUID;
 
@@ -18,11 +17,11 @@ public interface ClienteAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     ClienteResponse postCliente(@Valid @RequestBody ClienteRequest clienteRequest);
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{idCliente}")
     @ResponseStatus(code = HttpStatus.OK)
-    ClienteDetalhadoResponse getClientePorId(UUID id);
+    ClienteDetalhadoResponse getClientePorId(UUID idCliente);
 
-    @PatchMapping(value = "/{id Cliente}")
+    @PatchMapping(value = "/{idCliente}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchAlteraCliente(@PathVariable UUID idCliente, @RequestBody @Valid ClienteAlteracaoRequest clienteAlteracaoRequest);
 

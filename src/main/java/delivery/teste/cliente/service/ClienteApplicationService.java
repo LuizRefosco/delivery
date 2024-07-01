@@ -22,21 +22,21 @@ public class ClienteApplicationService implements ClienteService{
         log.info("[inicia] ClienteController - criaCliente");
         Cliente cliente = clienteRepository.salvaCliente(new Cliente(clienteRequest));
         log.info("[finaliza] ClienteController - criaCliente");
-        return ClienteResponse.builder().id(cliente.getId()).build();
+        return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
     }
 
     @Override
-    public Cliente buscaClientePorId(UUID id) {
+    public Cliente buscaClientePorId(UUID idCliente) {
         log.info("[inicia]  ClienteController - buscaClientePorId");
-        Cliente cliente = clienteRepository.buscaClientePorId(id);
+        Cliente cliente = clienteRepository.buscaClientePorId(idCliente);
         log.info("[finaliza] ClienteController - buscaClientePorId");
         return cliente;
     }
 
     @Override
-    public Cliente alteraClientePorId(UUID id, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+    public Cliente alteraClientePorId(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
         log.info("[inicia]  ClienteController - alteraClientePorId");
-        Cliente cliente = clienteRepository.buscaClientePorId(id);
+        Cliente cliente = clienteRepository.buscaClientePorId(idCliente);
         cliente.altera(clienteAlteracaoRequest);
         clienteRepository.salvaCliente(cliente);
         log.info("[finaliza]  ClienteController - alteraClientePorId");
@@ -44,9 +44,9 @@ public class ClienteApplicationService implements ClienteService{
     }
 
     @Override
-    public void deletaCliente(UUID id) {
+    public void deletaCliente(UUID idCliente) {
         log.info("[inicia]  ClienteController - alteraCliente");
-            Cliente cliente = clienteRepository.buscaClientePorId(id);
+            Cliente cliente = clienteRepository.buscaClientePorId(idCliente);
         clienteRepository.deletaCliente(cliente);
         log.info("[finaliza]  ClienteController - alteraCliente");
     }

@@ -3,13 +3,9 @@ package delivery.teste.credencial.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +14,6 @@ import java.util.Collection;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 public class Credencial implements UserDetails {
-	@MongoId(targetType = FieldType.STRING)
 	@Getter
 	private String usuario;
 	
@@ -34,6 +29,9 @@ public class Credencial implements UserDetails {
 		var encriptador = new BCryptPasswordEncoder();
 		this.senha = encriptador.encode(senha);
 		this.validado = true;
+	}
+
+	public Credencial(String nome) {
 	}
 
 	public void encriptaSenha() {

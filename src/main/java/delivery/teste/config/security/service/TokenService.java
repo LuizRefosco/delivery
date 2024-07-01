@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -18,9 +17,9 @@ import java.util.Optional;
 @Service
 @Log4j2
 public class TokenService {
-    @Value("${produdoro.jwt.expiracao}")
+    @Value("${delivery.jwt.expiracao}")
     private String expiracao;
-    @Value("${produdoro.jwt.chave}")
+    @Value("${delivery.jwt.chave}")
     private String chave;
 
     public String gerarToken(Authentication authentication) {
@@ -30,7 +29,7 @@ public class TokenService {
     public String gerarToken(Credencial credencial) {
         log.info("[inicio] TokenService - criação de token");
         String token = Jwts.builder()
-                .setIssuer("API do Produdoro")
+                .setIssuer("API do Delivery")
                 .setSubject(credencial.getUsuario())
                 .setIssuedAt(new Date())
                 .setExpiration(Date.from(LocalDateTime.now()

@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class ClienteDetalhadoResponse {
 
-    private UUID id;
+    private UUID idCliente;
     @NotBlank
     private String nome;
     @NotBlank
@@ -17,7 +17,7 @@ public class ClienteDetalhadoResponse {
 
     public ClienteDetalhadoResponse(Cliente cliente){
         this.nome = cliente.getNome();
-        this.id = cliente.getId();
+        this.idCliente = cliente.getIdCliente();
         this.endereco = cliente.getEndereco();
         this.telefone = cliente.getTelefone();
     }

@@ -22,11 +22,11 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     PedidoDetalhadoResponse getPedidoPorId(UUID idPedido);
 
-    @PatchMapping(value = "/{idPedido}")
+    @PatchMapping(value = "/alteraPedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchAlteraPedido(@PathVariable UUID idPedido, @RequestBody @Valid PedidoAlteracaoRequest pedidoAlteracaoRequest);
 
-    @DeleteMapping(value = "/{idPedido}")
+    @DeleteMapping(value = "/deletaPedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletePedido(@PathVariable UUID idPedido);
 }

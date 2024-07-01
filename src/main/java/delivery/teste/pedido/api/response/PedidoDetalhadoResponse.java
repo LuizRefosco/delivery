@@ -8,12 +8,12 @@ import java.util.UUID;
 @Value
 public class PedidoDetalhadoResponse {
 
-    private UUID id;
+    private UUID idPedido;
     private UUID idCliente;
     private String pedido;
 
     public PedidoDetalhadoResponse(Pedido pedido){
-        this.id =pedido.getIdPedido();
+        this.idPedido =pedido.getIdPedido();
         this.idCliente = pedido.getIdCliente();
         this.pedido = pedido.getPedido();
     }
